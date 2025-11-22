@@ -299,3 +299,29 @@ input:focus, select:focus, textarea:focus {
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Netflix Content Section Separator */
+.section-separator {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(10, 10, 10, 0.3) 25%,
+    rgba(10, 10, 10, 0.5) 50%,
+    rgba(10, 10, 10, 0.3) 75%,
+    transparent 100%
+  );
+}
+
+/* Background Image Fade Animation */
+@keyframes subtleFade {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+.bg-fade-animation {
+  animation: subtleFade 8s ease-in-out infinite;
+}

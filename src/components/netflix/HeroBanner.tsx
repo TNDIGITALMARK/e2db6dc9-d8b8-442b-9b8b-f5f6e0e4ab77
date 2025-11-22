@@ -12,14 +12,18 @@ interface HeroBannerProps {
 export function HeroBanner({ content }: HeroBannerProps) {
   return (
     <div className="relative h-[80vh] w-full">
-      {/* Background Image / Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black flex items-center justify-center">
-        {/* Backdrop Placeholder */}
-        <div className="absolute inset-0 opacity-50 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center" />
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src="/generated/hero-shadow-protocol.png"
+          alt={content.title}
+          className="w-full h-full object-cover"
+        />
       </div>
 
-      {/* Gradient Overlay (Bottom Fade) */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+      {/* Gradient Overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/60 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-center px-[4%] max-w-2xl">

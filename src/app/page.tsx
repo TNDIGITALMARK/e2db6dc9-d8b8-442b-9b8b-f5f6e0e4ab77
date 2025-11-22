@@ -32,8 +32,17 @@ export default function Home() {
       {/* Hero Banner */}
       <HeroBanner content={featuredContent} />
 
+      {/* Visual Separator - Creates distinct break between hero and content */}
+      <div className="relative h-40 section-separator">
+        <div className="absolute inset-0 bg-[url('/generated/hero-shadow-protocol.png')] bg-cover bg-center opacity-5 blur-xl" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#141414] via-[#0a0a0a] to-[#141414]" />
+
+        {/* Decorative line separator */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gray-800/50 to-transparent" />
+      </div>
+
       {/* Content Rows */}
-      <div className="relative z-10 -mt-32 pb-20">
+      <div className="relative z-10 pb-20 space-y-16">
         {continueWatching.length > 0 && (
           <ContentRow
             title="Continue Watching"
@@ -48,13 +57,29 @@ export default function Home() {
 
         <ContentRow title="Top Rated" content={topRated} />
 
-        <ContentRow title="Action & Adventure" content={actionContent} />
+        <ContentRow
+          title="Action & Adventure"
+          content={actionContent}
+          backgroundImage="/generated/row-bg-action.png"
+        />
 
-        <ContentRow title="Award-Winning Dramas" content={dramaContent} />
+        <ContentRow
+          title="Award-Winning Dramas"
+          content={dramaContent}
+          backgroundImage="/generated/row-bg-drama.png"
+        />
 
-        <ContentRow title="Comedy Specials" content={comedyContent} />
+        <ContentRow
+          title="Comedy Specials"
+          content={comedyContent}
+          backgroundImage="/generated/row-bg-comedy.png"
+        />
 
-        <ContentRow title="Documentaries" content={documentaries} />
+        <ContentRow
+          title="Documentaries"
+          content={documentaries}
+          backgroundImage="/generated/row-bg-documentaries.png"
+        />
       </div>
     </div>
   );

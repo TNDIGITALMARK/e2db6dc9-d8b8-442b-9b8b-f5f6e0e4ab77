@@ -9,9 +9,10 @@ interface ContentRowProps {
   title: string;
   content: Content[];
   showProgress?: boolean;
+  backgroundImage?: string;
 }
 
-export function ContentRow({ title, content, showProgress = false }: ContentRowProps) {
+export function ContentRow({ title, content, showProgress = false, backgroundImage }: ContentRowProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -27,7 +28,20 @@ export function ContentRow({ title, content, showProgress = false }: ContentRowP
   if (!content || content.length === 0) return null;
 
   return (
-    <div className="relative mb-12 group/row">
+    <div className={`relative group/row ${backgroundImage ? 'py-12' : 'mb-12'}`}>
+      {/* Optional Background Image */}
+      {backgroundImage && (
+        <div className="absolute inset-0 -z-10 overflow-hidden rounded-lg mx-[2%]">
+          <img
+            src={backgroundImage}
+            alt=""
+            className="w-full h-full object-cover bg-fade-animation"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#141414]/90 via-[#141414]/70 to-[#141414]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#141414]/80 via-transparent to-[#141414]/80" />
+        </div>
+      )}
+
       {/* Section Title */}
       <h2 className="text-white text-2xl font-semibold mb-4 px-[4%]">{title}</h2>
 
