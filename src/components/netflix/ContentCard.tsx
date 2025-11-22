@@ -22,8 +22,16 @@ export function ContentCard({ content, showProgress = false }: ContentCardProps)
       >
         {/* Thumbnail */}
         <div className="relative aspect-video rounded overflow-hidden bg-[#2F2F2F]">
-          {/* Placeholder gradient (Netflix-style) */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center">
+          {/* Actual Thumbnail Image */}
+          <img
+            src={content.thumbnailUrl}
+            alt={content.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+
+          {/* Fallback gradient (Netflix-style) - shown if image fails to load */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-700 via-gray-800 to-gray-900 flex items-center justify-center -z-10">
             <div className="text-center text-white/50">
               <p className="text-sm font-semibold">{content.title}</p>
               <p className="text-xs mt-1">{content.genre.join(' • ')}</p>
