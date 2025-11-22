@@ -1,36 +1,60 @@
-export const dynamic = 'force-dynamic'
+import { NavBar } from '@/components/netflix/NavBar';
+import { HeroBanner } from '@/components/netflix/HeroBanner';
+import { ContentRow } from '@/components/netflix/ContentRow';
+import {
+  allContent,
+  getTrendingContent,
+  getNewReleases,
+  getTopRated,
+  getContinueWatching,
+  getContentByGenre,
+} from '@/lib/mockData';
 
-export default function Index() {
+export default function Home() {
+  // Featured content for hero banner
+  const featuredContent = allContent.find(c => c.id === 'action-001') || allContent[0];
+
+  // Get content for different rows
+  const trendingContent = getTrendingContent();
+  const newReleases = getNewReleases();
+  const topRated = getTopRated();
+  const continueWatching = getContinueWatching('user-001'); // Mock user
+  const actionContent = getContentByGenre('Action');
+  const dramaContent = getContentByGenre('Drama');
+  const comedyContent = getContentByGenre('Comedy');
+  const documentaries = getContentByGenre('Documentary');
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center max-w-2xl px-4">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your App</h1>
-        <p className="text-xl mb-6 text-gray-600">
-          This template is configured to be absolutely lenient - builds never fail on validation errors.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-left">
-          <div className="p-4 bg-green-50 rounded-lg border border-green-200">
-            <h3 className="font-semibold text-green-800 mb-2">✅ Always Builds</h3>
-            <ul className="text-green-700 space-y-1">
-              <li>• TypeScript errors ignored</li>
-              <li>• ESLint warnings ignored</li>
-              <li>• Global error boundaries</li>
-              <li>• Asset type safety</li>
-            </ul>
-          </div>
-          <div className="p-4 bg-blue-50 rounded-lg border border-blue-200">
-            <h3 className="font-semibold text-blue-800 mb-2">🚀 Production Ready</h3>
-            <ul className="text-blue-700 space-y-1">
-              <li>• Next.js 15.5.2 App Router</li>
-              <li>• Vercel optimized</li>
-              <li>• SSR/SEO friendly</li>
-              <li>• Browser API protection</li>
-            </ul>
-          </div>
-        </div>
-        <p className="mt-6 text-gray-500">
-          Start building your amazing project here! This template will never fail builds due to validation errors.
-        </p>
+    <div className="min-h-screen bg-[#141414]">
+      {/* Navigation */}
+      <NavBar />
+
+      {/* Hero Banner */}
+      <HeroBanner content={featuredContent} />
+
+      {/* Content Rows */}
+      <div className="relative z-10 -mt-32 pb-20">
+        {continueWatching.length > 0 && (
+          <ContentRow
+            title="Continue Watching"
+            content={continueWatching}
+            showProgress={true}
+          />
+        )}
+
+        <ContentRow title="Trending Now" content={trendingContent} />
+
+        <ContentRow title="New Releases" content={newReleases} />
+
+        <ContentRow title="Top Rated" content={topRated} />
+
+        <ContentRow title="Action & Adventure" content={actionContent} />
+
+        <ContentRow title="Award-Winning Dramas" content={dramaContent} />
+
+        <ContentRow title="Comedy Specials" content={comedyContent} />
+
+        <ContentRow title="Documentaries" content={documentaries} />
       </div>
     </div>
   );

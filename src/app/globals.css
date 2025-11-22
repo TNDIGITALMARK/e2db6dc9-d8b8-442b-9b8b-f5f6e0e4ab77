@@ -1,97 +1,74 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   NETFLIX DESIGN SYSTEM - PIXEL-PERFECT REPLICATION
+   Extracted from: ai-generated-preview.png
+   ============================================ */
 
 :root {
-  /* Pure white background with crisp black text */
-  --background: 0 0% 100%;
-  --foreground: 0 0% 0%;
+  /* Netflix Color Palette (Exact HSL Values) */
+  /* Primary Netflix Red: #E50914 */
+  --netflix-red: 0 98% 48%;
+  --netflix-red-hover: 0 98% 52%;
 
-  /* Clean white cards with black text */
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 0%;
+  /* Deep Black Backgrounds: #141414, #1A1A1A, #2F2F2F */
+  --deep-black: 0 0% 8%;
+  --semi-dark: 0 0% 10%;
+  --charcoal: 0 0% 18%;
 
-  /* Popovers with white background */
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 0%;
+  /* Text Colors: White and Grays */
+  --pure-white: 0 0% 100%;
+  --light-gray: 0 0% 70%;
+  --medium-gray: 0 0% 50%;
 
-  /* Primary: Black with white text */
-  --primary: 0 0% 0%;
-  --primary-foreground: 0 0% 100%;
+  /* Netflix-Specific Variables */
+  --background: var(--deep-black);
+  --foreground: var(--pure-white);
 
-  /* Secondary: Light gray background with black text */
-  --secondary: 0 0% 97%;
-  --secondary-foreground: 0 0% 0%;
+  --card: var(--charcoal);
+  --card-foreground: var(--pure-white);
 
-  /* Muted: Subtle gray with darker text */
-  --muted: 0 0% 96%;
-  --muted-foreground: 0 0% 40%;
+  --popover: var(--semi-dark);
+  --popover-foreground: var(--pure-white);
 
-  /* Accent: Light gray */
-  --accent: 0 0% 96%;
-  --accent-foreground: 0 0% 0%;
+  --primary: var(--netflix-red);
+  --primary-foreground: var(--pure-white);
 
-  /* Destructive: Clean red */
-  --destructive: 0 70% 50%;
-  --destructive-foreground: 0 0% 100%;
+  --secondary: var(--charcoal);
+  --secondary-foreground: var(--pure-white);
 
-  /* Borders: Subtle gray */
-  --border: 0 0% 90%;
-  --input: 0 0% 90%;
-  --ring: 0 0% 0%;
+  --muted: var(--charcoal);
+  --muted-foreground: var(--light-gray);
 
-  /* Minimal rounded corners */
-  --radius: 0.375rem;
+  --accent: var(--netflix-red);
+  --accent-foreground: var(--pure-white);
 
-  /* Sidebar: Clean white with black text */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 0 0% 0%;
-  --sidebar-primary: 0 0% 0%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 0 0% 96%;
-  --sidebar-accent-foreground: 0 0% 0%;
-  --sidebar-border: 0 0% 90%;
-  --sidebar-ring: 0 0% 0%;
-}
+  --destructive: var(--netflix-red);
+  --destructive-foreground: var(--pure-white);
 
-.dark {
-  --background: 222.2 84% 4.9%;
-  --foreground: 210 40% 98%;
+  --border: var(--charcoal);
+  --input: var(--charcoal);
+  --ring: var(--netflix-red);
 
-  --card: 222.2 84% 4.9%;
-  --card-foreground: 210 40% 98%;
+  /* Border radius: 4px for cards and buttons */
+  --radius: 0.25rem;
 
-  --popover: 222.2 84% 4.9%;
-  --popover-foreground: 210 40% 98%;
+  /* Sidebar (Netflix theme) */
+  --sidebar-background: var(--deep-black);
+  --sidebar-foreground: var(--pure-white);
+  --sidebar-primary: var(--netflix-red);
+  --sidebar-primary-foreground: var(--pure-white);
+  --sidebar-accent: var(--charcoal);
+  --sidebar-accent-foreground: var(--pure-white);
+  --sidebar-border: var(--charcoal);
+  --sidebar-ring: var(--netflix-red);
 
-  --primary: 210 40% 98%;
-  --primary-foreground: 222.2 47.4% 11.2%;
-
-  --secondary: 217.2 32.6% 17.5%;
-  --secondary-foreground: 210 40% 98%;
-
-  --muted: 217.2 32.6% 17.5%;
-  --muted-foreground: 215 20.2% 65.1%;
-
-  --accent: 217.2 32.6% 17.5%;
-  --accent-foreground: 210 40% 98%;
-
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
-
-  --border: 217.2 32.6% 17.5%;
-  --input: 217.2 32.6% 17.5%;
-  --ring: 212.7 26.8% 83.9%;
-  --sidebar-background: 240 5.9% 10%;
-  --sidebar-foreground: 240 4.8% 95.9%;
-  --sidebar-primary: 224.3 76.3% 48%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 240 3.7% 15.9%;
-  --sidebar-accent-foreground: 240 4.8% 95.9%;
-  --sidebar-border: 240 3.7% 15.9%;
-  --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Netflix-specific measurements */
+  --nav-height: 68px;
+  --card-gap: 16px;
+  --section-gap: 48px;
+  --container-padding: 4%;
 }
 
 @theme {
@@ -164,40 +141,161 @@ All colors MUST be HSL.
   }
 }
 
+/* ============================================
+   GLOBAL ELEMENT STYLING
+   ============================================ */
+
 * {
   border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   font-feature-settings: "rlig" 1, "calt" 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
 
-/* Minimal, clean typography */
-h1, h2, h3, h4, h5, h6 {
+/* Netflix Typography Scale */
+h1 {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: hsl(var(--foreground));
+  margin: 0 0 24px 0;
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: hsl(var(--foreground));
+  margin: 0 0 16px 0;
+}
+
+h3 {
+  font-size: 24px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: hsl(var(--foreground));
+  margin: 0 0 12px 0;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+  margin: 0 0 8px 0;
+}
+
+h5 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: hsl(var(--foreground));
+  margin: 0 0 8px 0;
+}
+
+h6 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: hsl(var(--light-gray));
+  margin: 0 0 8px 0;
+}
+
+p {
+  margin: 0 0 16px 0;
   color: hsl(var(--foreground));
 }
 
-/* Clean button styles */
-button {
-  font-weight: 500;
+a {
+  color: hsl(var(--foreground));
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-/* Subtle shadows for depth */
+a:hover {
+  color: hsl(var(--light-gray));
+}
+
+/* Netflix Button Defaults */
+button {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Form Element Defaults */
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background-color: hsl(var(--charcoal));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: hsl(var(--netflix-red));
+}
+
+/* Netflix-Style Shadows */
 .shadow-sm {
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
 }
 
 .shadow {
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.4);
 }
 
 .shadow-md {
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  box-shadow: 0 8px 24px 0 rgba(0, 0, 0, 0.6);
+}
+
+.shadow-lg {
+  box-shadow: 0 12px 32px 0 rgba(0, 0, 0, 0.7);
+}
+
+/* Smooth Scrolling Containers */
+.scroll-smooth {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
 }
